@@ -1,19 +1,18 @@
 let humanScore = 0;
 let computerScore = 0;
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+const rock = document.querySelector("#Rock");
+const paper = document.querySelector("#Paper");
+const scissors = document.querySelector("#Scissors");
 const scoreSection = document.querySelector(".score");
 const scoreText = document.createElement("div");
 const score = document.createElement("div");
 const winner = document.createElement("div");
 
-const rockString = rock.textContent;
-const paperString = paper.textContent;
-const scissorsString = scissors.textContent;
+const rockString = rock.id;
+const paperString = paper.id;
+const scissorsString = scissors.id;
 scoreText.classList.add("score-text");
 score.classList.add("score");
-winner.classList.add("winner");
 
 function getCoumputerChoice() {
   const result = Math.random();
@@ -26,20 +25,6 @@ function getCoumputerChoice() {
     return "Scissors";
   }
 }
-
-// function getHumanChoice() {
-//   let userInput = prompt("Rock, Paper or Scissors?");
-
-//   if (
-//     userInput === "Rock" ||
-//     userInput === "Paper" ||
-//     userInput === "Scissors"
-//   ) {
-//     return userInput;
-//   } else {
-//     return "Not a valid choice";
-//   }
-// }
 
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
@@ -60,20 +45,11 @@ function playRound(humanChoice, computerChoice) {
   }
 
   if (humanScore === 5) {
-    winner.textContent = "You win the game!";
+    alert("You win the game!");
   } else if (computerScore === 5) {
-    winner.textContent = "You lose the game!";
+    alert("You lose the game!");
   }
 }
-
-// function playGame() {
-
-//   for (let i = 0; i < 5; i++) {
-//     const humanSelection = getHumanChoice();
-//     const computerSelection = getCoumputerChoice();
-//     playRound(humanSelection, computerSelection);
-//   }
-// }
 
 rock.addEventListener("click", () => {
   const computerSelection = getCoumputerChoice();
@@ -92,4 +68,3 @@ scissors.addEventListener("click", () => {
 
 scoreSection.appendChild(score);
 scoreSection.appendChild(scoreText);
-scoreSection.appendChild(winner);
